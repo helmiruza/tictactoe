@@ -16,10 +16,10 @@
   <script src="/js/jquery.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
   <script src="/js/application.js"></script>
-
   <title></title>
+  <%= yield_content :head %>
 </head>
 <body>
-  <%= yield %>
+  <%= yield_content :body %>
 </body>
 </html>

@@ -11,7 +11,6 @@ class Game < ActiveRecord::Base
   end
 
   def winnercheck(symbol)
-
   	@box1 = self.boxes.find_by(position: 1)
 	@box2 = self.boxes.find_by(position: 2)
 	@box3 = self.boxes.find_by(position: 3)
@@ -22,7 +21,14 @@ class Game < ActiveRecord::Base
 	@box8 = self.boxes.find_by(position: 8)
 	@box9 = self.boxes.find_by(position: 9)
 
-  	if ((@box1.value == symbol) && (@box2.value == symbol) && (@box3.value == symbol)) || ((@box4.value == symbol) && (@box5.value == symbol) && (@box6.value == symbol))  || ((@box7.value == symbol) && (@box8.value == symbol) && (@box9.value == symbol)) || ((@box1.value == symbol) && (@box4.value == symbol) && (@box7.value == symbol)) || ((@box2.value == symbol) && (@box5.value == symbol) && (@box8.value == symbol)) || ((@box3.value == symbol) && (@box6.value == symbol) && (@box9.value == symbol)) || ((@box1.value == symbol) && (@box5.value == symbol) && (@box9.value == symbol)) || ((@box3.value == symbol) && (@box5.value == symbol) && (@box7.value == symbol))
+  	if ((@box1.value == symbol) && (@box2.value == symbol) && (@box3.value == symbol)) ||
+  		((@box4.value == symbol) && (@box5.value == symbol) && (@box6.value == symbol)) ||
+  		((@box7.value == symbol) && (@box8.value == symbol) && (@box9.value == symbol)) ||
+  		((@box1.value == symbol) && (@box4.value == symbol) && (@box7.value == symbol)) ||
+  		((@box2.value == symbol) && (@box5.value == symbol) && (@box8.value == symbol)) ||
+  		((@box3.value == symbol) && (@box6.value == symbol) && (@box9.value == symbol)) ||
+  		((@box1.value == symbol) && (@box5.value == symbol) && (@box9.value == symbol)) ||
+  		((@box3.value == symbol) && (@box5.value == symbol) && (@box7.value == symbol))
   		return true
   	else
   		return false

@@ -2,6 +2,10 @@ get "/lobby" do
 	erb :game_lobby
 end
 
+post "/lobby" do
+	redirect to '/test/game'
+end
+
 post '/game/create' do
 	game = Game.create
 	redirect to "/game/id/#{game.id}"
@@ -29,4 +33,8 @@ get '/test/private' do
 	puts "session_id: " + session[:user_id].to_s
 	redirect to "/login" if session[:user_id].nil?
 	erb :user_test_private
+end
+
+get '/test/game' do
+	erb :game_test_public
 end

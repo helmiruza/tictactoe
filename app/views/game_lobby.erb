@@ -19,7 +19,7 @@
 	<!-- Tab panes -->
 	<div class="tab-content">
 		<div role="tabpanel" class="tab-pane active" id="GamePanel">
-			<div class="container">
+			<form class="container" action="/lobby" method="POST">
 				<br><br>
 				<table class="table table-hover">
 					<tr>
@@ -30,15 +30,15 @@
 					<tr>
 						<td>Athena</td>
 						<td>Waiting</td>
-						<td><a href="#" class="btn btn-primary">Join</a></td>
+						<td><button type="submit" class="btn btn-primary" value="game.id.sample">Join</button></td>
 					</tr>
 					<tr>
 						<td>Bevelor</td>
 						<td>Waiting</td>
-						<td><a href="#" class="btn btn-primary">Join</a></td>
+						<td><button type="submit" class="btn btn-primary" value="game.id.sample">Join</button></td>
 					</tr>
 				</table>
-			</div>
+			</form>
 		</div>
 		<div role="tabpanel" class="tab-pane" id="ProfilePanel">
 			B

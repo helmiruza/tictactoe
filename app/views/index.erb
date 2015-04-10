@@ -1,3 +1,12 @@
+<% content_for :head do %>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/application.css">
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+<% end %>
+
+<% content_for :body do %>
+<br>
 <div class="container">
     <div class="top-header">
       <h1>TicTacToe</h1>
@@ -24,9 +33,15 @@
 
     <input type="hidden" id="gamecount" value="<%=@game.count%>">
 
-    <form action='/getdata' method='post' id="playermove">
+    <form action='/getdata/<%= @game.id %>' method='post' id="playermove">
       <input type="hidden" name="player[move]" id="movevalue" value="none">
       <input type="hidden" name="player[elementid]" id="elementid" value="none">
+    </form><br><br>
+
+    <form action='/game/create' method='post'>
+      <button type="submit" class="btn btn-success">Create game</button>
     </form>
 
 </div>
+
+<% end %>

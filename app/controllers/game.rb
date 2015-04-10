@@ -1,7 +1,11 @@
-get '/' do
-  # Look in app/views/index.erb
+post '/game/create' do
+	game = Game.create
 
-  @game = Game.find(3)
+	redirect to "/game/id/#{game.id}"
+end
+
+get '/game/id/:game_id' do |x|
+	@game = Game.find(x)
   @box1 = @game.boxes.find_by(position: 1)
   @box2 = @game.boxes.find_by(position: 2)
   @box3 = @game.boxes.find_by(position: 3)
@@ -15,23 +19,3 @@ get '/' do
 
   erb :index
 end
-
-post '/getdata/:game_id' do |x|
-
-	game = Game.find(x)
-	game.count += 1
-	game.save!
-
-	box = game.boxes.find_by(position: params[:player][:elementid].to_i)
-
-	if box.value == ""
-		box.value = params[:player][:move]
-		box.save!
-	end
-
-	redirect to "/game/id/#{game.id}"
-end
-
-
-
-

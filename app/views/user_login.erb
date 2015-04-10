@@ -1,9 +1,15 @@
 <% content_for :head do %>
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/application.css">
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+
 <% end %>
 
 <% content_for :body do %>
 
 <div class="container">
+	<br><br>
 	<h1>Tic Tac Toe Game</h1>
 	<form action='/login' method='POST'>
 		<div class="form-group">

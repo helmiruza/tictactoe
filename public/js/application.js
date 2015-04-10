@@ -1,7 +1,40 @@
-$(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+$(document).ready(function(n){
+  
+  // var winner = 0;
+  var n = $("#gamecount").val();
+  
+  $(".col").click(function(){
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+    console.log("n:" + n)
+      if(n % 2 == 0) {
+
+        $(this).text("O");
+        
+        $("#movevalue").val("O");
+        $("#elementid").val($(this).attr("id"));
+        $("#playermove").submit();
+        // n += 1;
+        // return n;
+        
+      }
+
+      else if(n % 2 == 1) {
+        $(this).text("X");
+        
+        $("#movevalue").val("X");
+        $("#elementid").val($(this).attr("id"));
+        $("#playermove").submit();
+        // n += 1;
+        // return n;
+
+      }
+
+      else if (count == 9) {
+      	alert("it's a draw!");
+      }
+
+  
+  });
+  
+
 });

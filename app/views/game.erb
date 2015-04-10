@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <link rel="stylesheet" href="/css/tic_tac_toe.css">
+<% end %>
+
 <% content_for :body do %>
 <div class="container">
     <div class="top-header">
@@ -31,9 +35,6 @@
     <form action='/getdata' method='post' id="playermove">
       <input type="hidden" name="player[move]" id="movevalue" value="none">
       <input type="hidden" name="player[elementid]" id="elementid" value="none">
-    </form>
-
-    <form action='/winnercheck' method='post' id="winnercheck">
       <input type="hidden" name="player[symbol]" id="symbol" value="none">
       <input type="hidden" name="winner[id]" id="winnerplayerid" value="none">
     </form>

@@ -1,0 +1,30 @@
+<% content_for :head do %>
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/application.css">
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+
+<% end %>
+
+<% content_for :body do %>
+
+<div role="tabpanel">
+
+	<!-- Nav tabs -->
+	<ul class="nav nav-tabs" role="tablist">
+		<li role="presentation" class="active"><a href="#GamePanel" aria-controls="GamePanel" role="tab" data-toggle="tab">Home</a></li>
+		<li role="presentation"><a href="#ProfilePanel" aria-controls="ProfilePanel" role="tab" data-toggle="tab">Profile</a></li>
+		<li role="presentation"><a href="user/sign-out">Sign-Out</a></li>
+	</ul>
+
+	<!-- Tab panes -->
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane active" id="GamePanel">A
+		</div>
+		<div role="tabpanel" class="tab-pane" id="ProfilePanel">B
+		</div>
+	</div>
+
+</div>
+
+<% end %>

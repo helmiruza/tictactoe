@@ -14,10 +14,11 @@ require 'pathname'
 require 'pg'
 require 'active_record'
 require 'logger'
+require 'byebug'
 
 require 'sinatra'
 require "sinatra/reloader" if development?
-require 'sinatra/content_for'
+
 require 'erb'
 
 # Some helper constants for path-centric logic

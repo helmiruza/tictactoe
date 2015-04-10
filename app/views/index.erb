@@ -6,42 +6,4 @@
 <% end %>
 
 <% content_for :body do %>
-<br>
-<div class="container">
-    <div class="top-header">
-      <h1>TicTacToe</h1>
-    </div>
-
-
-    <table class="board" id="board">
-      <tr class="row">
-        <td class ="col" id="1"><%=@box1.value%></td>
-        <td class ="col" id="2"><%=@box2.value%></td>
-        <td class ="col" id="3"><%=@box3.value%></td>
-      </tr>
-      <tr class="row">
-        <td class ="col" id="4"><%=@box4.value%></td>
-        <td class ="col" id="5"><%=@box5.value%></td>
-        <td class ="col" id="6"><%=@box6.value%></td>
-      </tr>
-      <tr class="row">
-        <td class ="col" id="7"><%=@box7.value%></td>
-        <td class ="col" id="8"><%=@box8.value%></td>
-        <td class ="col" id="9"><%=@box9.value%></td>
-      </tr>
-    </table>
-
-    <input type="hidden" id="gamecount" value="<%=@game.count%>">
-
-    <form action='/getdata/<%= @game.id %>' method='post' id="playermove">
-      <input type="hidden" name="player[move]" id="movevalue" value="none">
-      <input type="hidden" name="player[elementid]" id="elementid" value="none">
-    </form><br><br>
-
-    <form action='/game/create' method='post'>
-      <button type="submit" class="btn btn-success">Create game</button>
-    </form>
-
-</div>
-
 <% end %>

@@ -1,0 +1,44 @@
+<% content_for :body do %>
+<div class="container">
+    <div class="top-header">
+      <h1>TicTacToe</h1>
+    </div>
+
+
+    <table class="board" id="board">
+      <tr class="row">
+        <td class ="col" id="1"><%=@box1.value%></td>
+        <td class ="col" id="2"><%=@box2.value%></td>
+        <td class ="col" id="3"><%=@box3.value%></td>
+      </tr>
+      <tr class="row">
+        <td class ="col" id="4"><%=@box4.value%></td>
+        <td class ="col" id="5"><%=@box5.value%></td>
+        <td class ="col" id="6"><%=@box6.value%></td>
+      </tr>
+      <tr class="row">
+        <td class ="col" id="7"><%=@box7.value%></td>
+        <td class ="col" id="8"><%=@box8.value%></td>
+        <td class ="col" id="9"><%=@box9.value%></td>
+      </tr>
+    </table>
+    
+    <!-- set as counter -->
+    <input type="hidden" id="gamecount" value="<%=@game.count%>">
+    <!-- set as game winner -->
+    <input type="hidden" id="gamewinner" value="<%=@game.winner%>">
+
+    <form action='/getdata' method='post' id="playermove">
+      <input type="hidden" name="player[move]" id="movevalue" value="none">
+      <input type="hidden" name="player[elementid]" id="elementid" value="none">
+    </form>
+
+    <form action='/winnercheck' method='post' id="winnercheck">
+      <input type="hidden" name="player[symbol]" id="symbol" value="none">
+      <input type="hidden" name="winner[id]" id="winnerplayerid" value="none">
+    </form>
+
+
+
+</div>
+<% end %>

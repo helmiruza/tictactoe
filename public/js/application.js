@@ -13,8 +13,17 @@ $(document).ready(function(n){
         $("#movevalue").val("O");
         $("#elementid").val($(this).attr("id"));
         $("#playermove").submit();
-        // n += 1;
-        // return n;
+        // check if player 1 won
+        $("#symbol").val("O");
+        $("#winnerplayerid").val("Player1");
+        $("#winnercheck").submit();
+
+        // $("#gamewinner").val()
+        console.log($("#gamewinner").val())
+        // if($("#gamewinner").val() != "" ) {
+        //   alert("$("#gamewinner").val()" + " has won!");
+
+        // }
         
       }
 
@@ -24,8 +33,16 @@ $(document).ready(function(n){
         $("#movevalue").val("X");
         $("#elementid").val($(this).attr("id"));
         $("#playermove").submit();
-        // n += 1;
-        // return n;
+        // check if player 2 won
+        $("#symbol").val("X");
+        $("#winnerplayerid").val("Player2");
+        $("#winnercheck").submit();
+        
+        // if($("#gamewinner").val() != "" ) {
+        //   alert("$("#gamewinner").val()" + " has won!");
+
+        // }
+        
 
       }
 

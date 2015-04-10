@@ -2,6 +2,10 @@ get "/lobby" do
 	erb :game_lobby
 end
 
+post "/lobby" do
+	redirect to '/test/game'
+end
+
 post '/game/create' do
 	game = Game.create
 	redirect to "/game/id/#{game.id}"
@@ -31,6 +35,7 @@ get '/test/private' do
 	erb :user_test_private
 end
 
+
 post '/getdata' do
 
  @game = Game.find_by(id: 6)
@@ -47,4 +52,8 @@ post '/getdata' do
   end
 
   redirect to "/game/id/#{@game.id}"
+
+get '/test/game' do
+	erb :game_test_public
+
 end

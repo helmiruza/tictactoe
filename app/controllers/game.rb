@@ -20,3 +20,13 @@ get '/game/id/:game_id' do |x|
 	@box9 = @game.boxes.find_by(position: 9)
 	erb :index
 end
+
+get '/test/lobby' do
+	erb :user_test_landing
+end
+
+get '/test/private' do
+	puts "session_id: " + session[:user_id].to_s
+	redirect to "/login" if session[:user_id].nil?
+	erb :user_test_private
+end

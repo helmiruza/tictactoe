@@ -1,3 +1,7 @@
+get "/lobby" do
+	erb :game_lobby
+end
+
 post '/game/create' do
 	game = Game.create
 

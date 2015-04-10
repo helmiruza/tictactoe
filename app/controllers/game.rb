@@ -18,7 +18,7 @@ get '/game/id/:game_id' do |x|
 	@box7 = @game.boxes.find_by(position: 7)
 	@box8 = @game.boxes.find_by(position: 8)
 	@box9 = @game.boxes.find_by(position: 9)
-	erb :index
+	erb :game
 end
 
 get '/test/lobby' do
@@ -29,4 +29,22 @@ get '/test/private' do
 	puts "session_id: " + session[:user_id].to_s
 	redirect to "/login" if session[:user_id].nil?
 	erb :user_test_private
+end
+
+post '/getdata' do
+
+ @game = Game.find_by(id: 6)
+ @game.count += 1
+ @game.save!
+
+ box = @game.boxes.find_by(position: params[:player][:elementid].to_i)
+ box.value = params[:player][:move]
+ box.save!
+
+  if @game.winnercheck(params[:player][:symbol]) == true
+    @game.winner = params[:winner][:id]
+    @game.save
+  end
+
+  redirect to "/game/id/#{@game.id}"
 end

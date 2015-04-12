@@ -1,5 +1,52 @@
 .container {
 		margin: auto;
-		margin-top: -25px;
-		width: 720px;	
+		width: 600px;
+		text-align: center;	
 		}
+.lobby {
+	margin-top: 80px;
+}
+
+.board td{
+	  background-color: grey;
+	  color:#fff;
+	  font-size:40px;
+	  height: 150px;
+	  width: 150px;
+	  text-align: center;
+}
+
+.board{
+margin-top: 30px;
+}
+
+.creategamelobby{
+	padding-top: 10px;
+	border-top: 1px solid #d3d3d3;
+	border-bottom: 1px solid #d3d3d3;
+}
+
+.gamelist td{
+	vertical-align: text-middle;
+}
+
+.top-header{
+	margin-top: 60px;
+}
+
+.gameplayers{
+	padding-top: 10px;
+	width:450px;
+	border-top: 1px solid #d3d3d3;
+	border-bottom: 1px solid #d3d3d3;	
+}
+
+.top10{
+	width:450px;
+	text-align: center;
+}
+
+.login{
+	width:450px;
+	text-align: center;
+}

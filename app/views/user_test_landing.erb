@@ -1,9 +1,0 @@
-<% content_for :head do %>
-<% end %>
-
-<% content_for :body do %>
-	<h1>This is a landing page</h1>
-	<%= "<h2>" + session[:user_id].to_s + "</h2>" %>
-	<a href="/test/user/private" class="btn btn-primary">Into Private Test Page</a>
-	<a href="/user/sign-out" class="btn btn-warning">Sign Out</a>
-<% end %>

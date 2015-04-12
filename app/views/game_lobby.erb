@@ -1,50 +1,61 @@
-<% content_for :head do %>
-	<link rel="stylesheet" href="/css/application.css">
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-	<script src="/js/jquery.min.js"></script>
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<% end %>
+<div class="container">
+	<div class ="lobby">
+				<p>Games available now. Click join to play</p>					
+					<table class="table table-hover">
+						<tr>
+							<td>Created By</td>
+							<td>Status</td>
+							<td>Action</td>
+						</tr>
+						<%if @gamesavailable == nil %>
+						<% else %>
+						<% @gamesavailable.each do |game|%>
+						<tr class="gamelist">
+							<td><% creator = User.find_by(id: game.player1_id_id) %><%= creator.username%></td>
+							<td><%= game.status %></td>
+							<td>
+								<form action='/join' method='post' id="joingame">
+									<input type="hidden" name="player2[id]" value="<%= session[:user_id]%>">
+									<input type="hidden" name="game[id]" value="<%= game.id %>">
+								<button type="submit" class="btn btn-primary">Join</button></form></td></p>
+						</tr>
+						<% end %>
+						<% end %>
+					</table>
+				<div class="creategamelobby">
+					<p>Can't find a game?Create one now!</p>
+					<p>Once the game is created, please wait for the second player</p>
+				</div><br>
 
-<% content_for :body do %>
+				<div class="row">
+			      <form action='/game/create' method='post' id="gamecreate">
+			        <button type="submit" class="btn btn-info btn-lg">Create New Game</button>
+			      </form>
+			    </div>
 
-<div role="tabpanel">
-
-	<!-- Nav tabs -->
-	<ul class="nav nav-tabs" role="tablist">
-		<li role="presentation" class="active"><a href="#GamePanel" aria-controls="GamePanel" role="tab" data-toggle="tab">Home</a></li>
-		<li role="presentation"><a href="#ProfilePanel" aria-controls="ProfilePanel" role="tab" data-toggle="tab">Profile</a></li>
-		<li role="presentation"><a href="user/sign-out">Sign-Out</a></li>
-	</ul>
-
-	<!-- Tab panes -->
-	<div class="tab-content">
-		<div role="tabpanel" class="tab-pane active" id="GamePanel">
-			<form class="container" action="/lobby" method="POST">
-				<br><br>
-				<table class="table table-hover">
-					<tr>
-						<td>Player</td>
-						<td>Status</td>
-						<td>Action</td>
-					</tr>
-					<tr>
-						<td>Athena</td>
-						<td>Waiting</td>
-						<td><button type="submit" class="btn btn-primary" value="game.id.sample">Join</button></td>
-					</tr>
-					<tr>
-						<td>Bevelor</td>
-						<td>Waiting</td>
-						<td><button type="submit" class="btn btn-primary" value="game.id.sample">Join</button></td>
-					</tr>
-				</table>
-			</form>
-		</div>
-		<div role="tabpanel" class="tab-pane" id="ProfilePanel">
-			B
-		</div>
 	</div>
-
+	
+	<center>
+	<div class ="top10">
+		<h2>Scores : Top 10</h2>					
+			<table class="table table-hover">
+				<tr>
+					<td>Rank</td>
+					<td>Username</td>
+					<td>Total Points</td>
+				</tr>
+				<% @topten.each_with_index do |user,index|%>
+				<tr class="gamelist">
+					<td><%= index + 1 %></td>
+					<td><%= user.username %></td>
+					<td><%= user.points %></td>
+				</tr>
+				<% end %>
+			</table>
+	</div>
+	</center>
 </div>
 
-<% end %>
+<!-- auto refresh if user created game, to connect game if player 2 joins game -->
+
+<meta http-equiv="Refresh" content="5">

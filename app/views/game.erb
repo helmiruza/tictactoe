@@ -1,31 +1,52 @@
-<% content_for :head do %>
-  <link rel="stylesheet" href="/css/tic_tac_toe.css">
-<% end %>
-
-<% content_for :body do %>
 <div class="container">
     <div class="top-header">
       <h1>TicTacToe</h1>
     </div>
+    
+    <center>
+    <div class="gameplayers">
+      <p>Player 1:<%p1 = User.find_by(id: @game.player1_id_id)%> <%=p1.username%> | Player 2:<%p2 = User.find_by(id: @game.player2_id_id)%> <%=p2.username%></p>
+    </div></center>
 
+    <div class="playerturn">
+      <%if @game.winner != "" %>
+        <h3><%= @game.winner%> has won!</h3>
+      <% else %>
+        <%if @game.count % 2 == 0%>
+        <h3>Player 1's Turn</h3>
+        <%else%>
+        <h3>Player 2's Turn</h3>
+        <% end %>
+      <% end %>
+    </div>
 
+    <center>
     <table class="board" id="board">
+      
       <tr class="row">
-        <td class ="col" id="1"><%=@box1.value%></td>
-        <td class ="col" id="2"><%=@box2.value%></td>
-        <td class ="col" id="3"><%=@box3.value%></td>
+        <td id="1"><%=@box1.value%></td>
+        <td id="2"><%=@box2.value%></td>
+        <td id="3"><%=@box3.value%></td>
       </tr>
       <tr class="row">
-        <td class ="col" id="4"><%=@box4.value%></td>
-        <td class ="col" id="5"><%=@box5.value%></td>
-        <td class ="col" id="6"><%=@box6.value%></td>
+        <td id="4"><%=@box4.value%></td>
+        <td id="5"><%=@box5.value%></td>
+        <td id="6"><%=@box6.value%></td>
       </tr>
       <tr class="row">
-        <td class ="col" id="7"><%=@box7.value%></td>
-        <td class ="col" id="8"><%=@box8.value%></td>
-        <td class ="col" id="9"><%=@box9.value%></td>
+        <td id="7"><%=@box7.value%></td>
+        <td id="8"><%=@box8.value%></td>
+        <td id="9"><%=@box9.value%></td>
       </tr>
     </table>
+    </center> 
+    <br>
+    
+    <div class="row">
+      <form action='/game/create' method='post' id="gamecreate">
+        <button type="submit" class="btn btn-primary btn-lg">Create New Game</button>
+      </form>
+    </div>
     
     <!-- set as counter -->
     <input type="hidden" id="gamecount" value="<%=@game.count%>">
@@ -39,7 +60,65 @@
       <input type="hidden" name="winner[id]" id="winnerplayerid" value="none">
     </form>
 
-
+    <form action='/setdraw' method='post' id="draw">
+      <input type="hidden" name="game[status]" value="Draw">
+    </form>
 
 </div>
-<% end %>
+
+<script>
+
+$(document).ready(function(n){
+  
+  var n = $("#gamecount").val();
+
+  if($("#gamewinner").val() != ""){
+    alert($("#gamewinner").val() + " has won!");
+  }
+
+  else if(n == 9) {
+    if (confirm("It's a draw")) {
+      $("#draw").submit();
+    } 
+    else {
+      alert('Why did you press cancel?');
+    }
+  }
+  
+  else {
+
+    $("#board td").click(function(){
+
+      if (($(this).text() == "O") || ($(this).text() == "X")) {
+          alert('Already selected');
+      }
+
+      else {
+        
+        if(n % 2 == 0) {
+          $(this).text("O");
+          $("#movevalue").val("O");
+          $("#elementid").val($(this).attr("id"));
+          $("#symbol").val("O");
+          $("#winnerplayerid").val("Player1");
+
+          $("#playermove").submit();          
+        }
+
+        else if(n % 2 == 1) {
+          $(this).text("X");
+          $("#movevalue").val("X");
+          $("#elementid").val($(this).attr("id"));
+          $("#symbol").val("X");
+          $("#winnerplayerid").val("Player2");
+
+          $("#playermove").submit();
+        }
+      }
+    
+    });
+  }      
+
+});
+
+</script>
